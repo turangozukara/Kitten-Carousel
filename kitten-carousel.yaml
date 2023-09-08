@@ -9,7 +9,7 @@ Resources:
   KittenCarouselProject:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: !Ref LatestAmiId
+      ImageId: ami-01c647eace872fc02
       InstanceType: t2.micro
       KeyName: firstkey
       SecurityGroups: 
@@ -21,17 +21,17 @@ Resources:
           Value: Kitten-Carousel-Project
       UserData: 
         Fn::Base64: !Sub |
-              #! /bin/bash
-              sudo dnf update -y
-              sudo dnf install httpd -y
-              cd /var/www/html/
-              sudo chmod -R 777 /var/www/html/
-              wget https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/cat0.jpg
-              wget https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/cat1.jpg
-              wget https://github.com/turangozukara/Kitten-Carousel/blob/main/101-kittens-carousel-static-website-ec2/static-web/cat2.jpg?raw=true
-              wget https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/index.html
-              sudo systemctl start httpd
-              sudo systemctl enable httpd
+            #! /bin/bash
+            sudo dnf update -y
+            sudo dnf install httpd -y
+            cd /var/www/html/
+            sudo chmod -R 777 /var/www/html/
+            wget https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/cat0.jpg
+            wget https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/cat1.jpg
+            wget https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/cat2.jpg
+            wget https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/index.html
+            sudo systemctl start httpd
+            sudo systemctl enable httpd
   ProjectSecGrp:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -46,7 +46,3 @@ Resources:
           FromPort: 80
           ToPort: 80
           CidrIp: 0.0.0.0/0
-Parameters:
-  LatestAmiId:
-    Type: "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>"
-    Default: "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
