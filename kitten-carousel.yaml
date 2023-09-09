@@ -33,10 +33,11 @@ Resources:
             sudo dnf install httpd -y
             cd /var/www/html/
             sudo chmod -R 777 /var/www/html/
-            wget https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/cat0.jpg
-            wget https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/cat1.jpg
-            wget https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/cat2.jpg
-            wget https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/index.html
+            FLDR=https://raw.githubusercontent.com/turangozukara/Kitten-Carousel/main/101-kittens-carousel-static-website-ec2/static-web/
+            wget $FLDR/cat0.jpg
+            wget $FLDR/cat1.jpg
+            wget $FLDR/cat2.jpg
+            wget $FLDR/index.html
             sudo systemctl start httpd
             sudo systemctl enable httpd
   ProjectSecGrp:
