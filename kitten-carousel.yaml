@@ -23,9 +23,7 @@ Resources:
         - !Ref ProjectSecGrp
       Tags: 
         - Key: Name
-          Value: TuranInstance
-        - Key: Project
-          Value: Kitten-Carousel-Project
+          Value: !Sub Turan ${AWS::StackName}
       UserData: 
         Fn::Base64: !Sub |
             #! /bin/bash
@@ -54,3 +52,13 @@ Resources:
           FromPort: 80
           ToPort: 80
           CidrIp: 0.0.0.0/0
+      Tags: 
+        - Key: env
+          Value: dev
+
+Outputs:
+  WebSiteURL:
+    Description: This output gives the URL of EC2
+    Value: !Sub 
+      - http://${PublicAddress}
+      - PublicAddress: !GetAtt KittenCarouselProject.PublicDnsName
