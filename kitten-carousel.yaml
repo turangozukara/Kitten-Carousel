@@ -10,7 +10,6 @@ Description: |
   then deployed on Apache Web Server.
 # Parameters:
 #   LatestAmiId:
-#     Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
 Resources:
   KittenCarouselProject:
     Type: AWS::EC2::Instance
