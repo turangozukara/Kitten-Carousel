@@ -9,7 +9,6 @@ Description: |
   Website is downloaded from my Public Github repository,
   then deployed on Apache Web Server.
 # Parameters:
-#   LatestAmiId:
 Resources:
   KittenCarouselProject:
     Type: AWS::EC2::Instance
