@@ -8,7 +8,6 @@ Description: |
   and ssh port 22 from anywhere. Kittens Carousel Static 
   Website is downloaded from my Public Github repository,
   then deployed on Apache Web Server.
-# Parameters:
 Resources:
   KittenCarouselProject:
     Type: AWS::EC2::Instance
